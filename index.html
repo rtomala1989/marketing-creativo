@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Landing page universitaria del proyecto Marketing Creativo.">
+  <title>Marketing Creativo</title>
+
+  <!-- Fuente: puedes cambiarla por otra de Google Fonts si lo deseas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f7f3ff;
+      --surface: #ffffff;
+      --surface-soft: #fbf9ff;
+      --ink: #161322;
+      --muted: #605a70;
+      --primary: #6d28d9;
+      --primary-dark: #4c1d95;
+      --pink: #ec4899;
+      --blue: #2dd4bf;
+      --line: rgba(109, 40, 217, 0.14);
+      --shadow: 0 18px 50px rgba(54, 29, 95, 0.14);
+      --radius: 24px;
+      --max-width: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Poppins", Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    img,
+    iframe {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a.button {
+      font: inherit;
+    }
+
+    .page {
+      overflow: hidden;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      width: 100%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.84);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 76px;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 800;
+      color: var(--primary-dark);
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--pink));
+      color: #ffffff;
+      box-shadow: 0 12px 30px rgba(109, 40, 217, 0.28);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 14px;
+      background: var(--primary);
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      margin: 5px auto;
+      border-radius: 99px;
+      background: currentColor;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: #332a45;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: rgba(109, 40, 217, 0.1);
+      color: var(--primary);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .section {
+      padding: 96px 0;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      padding: 130px 0 80px;
+      color: #ffffff;
+      background:
+        linear-gradient(90deg, rgba(17, 13, 31, 0.9), rgba(76, 29, 149, 0.66), rgba(236, 72, 153, 0.18)),
+        url("https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 130px;
+      background: linear-gradient(180deg, rgba(247, 243, 255, 0), var(--bg));
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+      align-items: center;
+      gap: 44px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #f7eaff;
+      font-size: 0.86rem;
+      font-weight: 600;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero h1,
+    .section-title {
+      font-family: "Montserrat", sans-serif;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      font-size: clamp(3.2rem, 7vw, 6.8rem);
+      font-weight: 800;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin-top: 22px;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: clamp(1.03rem, 2vw, 1.25rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      gap: 10px;
+      padding: 13px 20px;
+      border: 0;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--pink), var(--primary));
+      color: #ffffff;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 16px 34px rgba(236, 72, 153, 0.28);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 42px rgba(109, 40, 217, 0.3);
+      outline: none;
+    }
+
+    .button.secondary {
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: none;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-panel {
+      display: grid;
+      gap: 16px;
+      padding: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.13);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-panel img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 18px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .hero-stat {
+      padding: 14px 12px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.14);
+      text-align: center;
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.35rem;
+    }
+
+    .hero-stat span {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.78rem;
+    }
+
+    .section-heading {
+      display: grid;
+      gap: 12px;
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-kicker {
+      color: var(--primary);
+      font-size: 0.86rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      color: var(--ink);
+      font-size: clamp(2rem, 4vw, 3.15rem);
+      font-weight: 800;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .about-card,
+    .team-card,
+    .portfolio-card,
+    .social-box,
+    .carousel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .about-card {
+      padding: 28px;
+    }
+
+    .about-card p + p {
+      margin-top: 16px;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--surface-soft);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(109, 40, 217, 0.12);
+    }
+
+    .icon {
+      display: grid;
+      width: 54px;
+      height: 54px;
+      place-items: center;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(109, 40, 217, 0.12), rgba(236, 72, 153, 0.14));
+      color: var(--primary);
+      font-size: 1.45rem;
+    }
+
+    .feature h3,
+    .team-card h3,
+    .portfolio-card h3,
+    .social-box h3 {
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.1rem;
+      line-height: 1.25;
+    }
+
+    .feature p,
+    .team-card p,
+    .portfolio-card p,
+    .social-box p {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .team-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .team-card:hover,
+    .portfolio-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 56px rgba(54, 29, 95, 0.18);
+    }
+
+    .member-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+
+    .team-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 18px;
+    }
+
+    .role {
+      display: inline-flex;
+      align-self: flex-start;
+      margin: 8px 0 4px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(45, 212, 191, 0.15);
+      color: #0f766e;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .video-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      margin-top: 16px;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #151225;
+    }
+
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .portfolio-wrap {
+      display: grid;
+      gap: 28px;
+    }
+
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      background: #120f21;
+      color: #ffffff;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.45s ease;
+    }
+
+    .slide {
+      position: relative;
+      flex: 0 0 100%;
+      min-height: 380px;
+      display: grid;
+      align-items: end;
+      padding: 34px;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(18, 15, 33, 0.08), rgba(18, 15, 33, 0.82));
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+    }
+
+    .slide-content span,
+    .type-badge {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(236, 72, 153, 0.14);
+      color: var(--pink);
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .slide-content span {
+      background: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+    }
+
+    .slide-content h3 {
+      margin-top: 12px;
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(1.65rem, 3vw, 2.4rem);
+      line-height: 1.1;
+    }
+
+    .slide-content p {
+      max-width: 560px;
+      margin-top: 10px;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .carousel-controls {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      z-index: 2;
+      display: flex;
+      gap: 10px;
+    }
+
+    .control-btn {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .control-btn:hover {
+      background: rgba(255, 255, 255, 0.24);
+      transform: translateY(-2px);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .portfolio-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .portfolio-card img {
+      width: 100%;
+      aspect-ratio: 16 / 11;
+      object-fit: cover;
+    }
+
+    .portfolio-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 18px;
+    }
+
+    .portfolio-body .button {
+      width: 100%;
+      margin-top: auto;
+      padding: 10px 14px;
+      min-height: 42px;
+      font-size: 0.9rem;
+    }
+
+    .type-badge {
+      margin-bottom: 10px;
+    }
+
+    .social-section {
+      padding-bottom: 110px;
+    }
+
+    .social-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .social-box {
+      padding: 28px;
+    }
+
+    .social-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .social-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      color: #ffffff;
+      font-weight: 800;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .social-button.instagram {
+      background: linear-gradient(135deg, #f97316, #ec4899, #7c3aed);
+    }
+
+    .social-button.tiktok {
+      background: linear-gradient(135deg, #111827, #0891b2);
+    }
+
+    .social-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 30px rgba(54, 29, 95, 0.18);
+    }
+
+    .qr-card {
+      display: grid;
+      place-items: center;
+      min-height: 260px;
+      padding: 28px;
+      border: 2px dashed rgba(109, 40, 217, 0.24);
+      border-radius: var(--radius);
+      background: var(--surface-soft);
+      text-align: center;
+    }
+
+    .qr-placeholder {
+      display: grid;
+      width: 160px;
+      height: 160px;
+      place-items: center;
+      margin-bottom: 16px;
+      border-radius: 20px;
+      background:
+        linear-gradient(90deg, rgba(22, 19, 34, 0.08) 50%, transparent 50%) 0 0 / 28px 28px,
+        linear-gradient(rgba(22, 19, 34, 0.08) 50%, transparent 50%) 0 0 / 28px 28px,
+        #ffffff;
+      color: var(--primary);
+      font-weight: 800;
+      box-shadow: inset 0 0 0 10px #ffffff, 0 16px 30px rgba(54, 29, 95, 0.12);
+    }
+
+    .footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1040px) {
+      .team-grid,
+      .portfolio-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-grid,
+      .about-layout,
+      .social-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-panel {
+        max-width: 640px;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .nav-toggle {
+        display: inline-block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 76px;
+        left: 16px;
+        right: 16px;
+        display: grid;
+        gap: 6px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: var(--shadow);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+
+      .nav-links.is-open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .nav-links a {
+        justify-content: center;
+      }
+
+      .nav-toggle.is-open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .nav-toggle.is-open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .nav-toggle.is-open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      .section {
+        padding: 76px 0;
+      }
+
+      .hero {
+        padding-top: 116px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: min(100% - 24px, var(--max-width));
+      }
+
+      .brand {
+        font-size: 0.94rem;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-bottom: 64px;
+      }
+
+      .hero h1 {
+        font-size: 3.25rem;
+      }
+
+      .hero-actions,
+      .social-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .button,
+      .social-button {
+        width: 100%;
+      }
+
+      .hero-stats,
+      .team-grid,
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-card,
+      .social-box {
+        padding: 22px;
+      }
+
+      .feature {
+        grid-template-columns: 1fr;
+      }
+
+      .slide {
+        min-height: 430px;
+        padding: 24px;
+      }
+
+      .carousel-controls {
+        right: 16px;
+        bottom: 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <nav class="nav container" aria-label="Navegación principal">
+        <a href="#inicio" class="brand" aria-label="Marketing Creativo">
+          <span class="brand-mark">MC</span>
+          <span>Marketing Creativo</span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="nav-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#quienes-somos">Quiénes somos</a></li>
+          <li><a href="#equipo">Equipo</a></li>
+          <li><a href="#portafolio">Portafolio</a></li>
+          <li><a href="#redes">Redes Sociales</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="inicio" class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <span class="eyebrow">Publicidad, marketing y redes sociales</span>
+            <!-- Cambia aquí el nombre del proyecto si lo necesitas -->
+            <h1>Marketing Creativo</h1>
+            <!-- Cambia aquí la frase del equipo -->
+            <p>Conectamos ideas con emociones</p>
+            <div class="hero-actions">
+              <a class="button" href="#portafolio">Ver portafolio</a>
+              <a class="button secondary" href="#equipo">Conocer al equipo</a>
+            </div>
+          </div>
+
+          <aside class="hero-panel reveal" aria-label="Resumen visual del proyecto">
+            <!-- Cambia esta imagen por una foto o banner propio del equipo -->
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Equipo de estudiantes trabajando en una estrategia creativa">
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <strong>4</strong>
+                <span>Integrantes</span>
+              </div>
+              <div class="hero-stat">
+                <strong>4</strong>
+                <span>Productos</span>
+              </div>
+              <div class="hero-stat">
+                <strong>100%</strong>
+                <span>Creatividad</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="quienes-somos" class="section">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="section-kicker">¿Quiénes somos?</span>
+            <h2 class="section-title">Un equipo que transforma ideas en contenido con intención.</h2>
+            <p class="section-copy">Nuestro trabajo mezcla estrategia, diseño y formatos digitales para comunicar mensajes claros, visuales y cercanos.</p>
+          </div>
+
+          <div class="about-layout">
+            <article class="about-card reveal">
+              <!-- Edita este texto para personalizar la descripción del equipo -->
+              <p>Somos un equipo de estudiantes de Publicidad y Marketing comprometidos con la creación de contenido creativo, visual y estratégico. Nuestro objetivo es comunicar ideas de manera clara, atractiva y moderna, utilizando recursos digitales como videos, podcast, infografías y redes sociales.</p>
+              <p>Este proyecto nace como una forma de poner en práctica lo aprendido en clase: investigar, proponer, diseñar y producir piezas que conecten con una audiencia real. Cada integrante aporta una mirada distinta, pero todos trabajamos con la misma meta: crear contenido que se entienda, se vea bien y genere interés.</p>
+            </article>
+
+            <div class="feature-list">
+              <article class="feature reveal">
+                <div class="icon" aria-hidden="true">✦</div>
+                <div>
+                  <h3>Estrategia clara</h3>
+                  <p>Organizamos cada pieza pensando en el mensaje, el público y el canal donde se va a publicar.</p>
+                </div>
+              </article>
+
+              <article class="feature reveal">
+                <div class="icon" aria-hidden="true">●</div>
+                <div>
+                  <h3>Diseño visual</h3>
+                  <p>Cuidamos colores, composición, tipografía y estilo para lograr una presentación profesional.</p>
+                </div>
+              </article>
+
+              <article class="feature reveal">
+                <div class="icon" aria-hidden="true">▶</div>
+                <div>
+                  <h3>Contenido digital</h3>
+                  <p>Producimos recursos para redes, video, audio e infografías con enfoque actual y estudiantil.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="equipo" class="section">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="section-kicker">El Equipo</span>
+            <h2 class="section-title">Roles definidos para crear mejor.</h2>
+            <p class="section-copy">Cada integrante lidera una parte del proyecto y suma habilidades para que las piezas tengan coherencia, calidad y personalidad.</p>
+          </div>
+
+          <div class="team-grid">
+            <article class="team-card reveal">
+              <!-- Cambia la foto por una imagen real de Ana -->
+              <img class="member-photo" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=80" alt="Foto de Ana Torres">
+              <div class="team-body">
+                <h3>Ana Torres</h3>
+                <span class="role">Coordinadora del proyecto</span>
+                <p>Organiza las tareas, cuida los tiempos de entrega y mantiene la idea principal alineada con los objetivos de la campaña.</p>
+                <div class="video-frame">
+                  <!-- VIDEO ANA: reemplaza VIDEO_ID_ANA por el ID real del video de YouTube de 45 segundos -->
+                  <iframe src="https://www.youtube.com/embed/VIDEO_ID_ANA" title="Video de Ana Torres" allowfullscreen></iframe>
+                </div>
+              </div>
+            </article>
+
+            <article class="team-card reveal">
+              <!-- Cambia la foto por una imagen real de Luis -->
+              <img class="member-photo" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&q=80" alt="Foto de Luis Mendoza">
+              <div class="team-body">
+                <h3>Luis Mendoza</h3>
+                <span class="role">Diseñador gráfico</span>
+                <p>Desarrolla la línea visual del proyecto, selecciona recursos gráficos y convierte las ideas en piezas atractivas.</p>
+                <div class="video-frame">
+                  <!-- VIDEO LUIS: reemplaza VIDEO_ID_LUIS por el ID real del video de YouTube de 45 segundos -->
+                  <iframe src="https://www.youtube.com/embed/VIDEO_ID_LUIS" title="Video de Luis Mendoza" allowfullscreen></iframe>
+                </div>
+              </div>
+            </article>
+
+            <article class="team-card reveal">
+              <!-- Cambia la foto por una imagen real de Camila -->
+              <img class="member-photo" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=700&q=80" alt="Foto de Camila Vera">
+              <div class="team-body">
+                <h3>Camila Vera</h3>
+                <span class="role">Creadora de contenido</span>
+                <p>Propone mensajes, adapta el tono para redes sociales y trabaja en ideas que conectan con el público joven.</p>
+                <div class="video-frame">
+                  <!-- VIDEO CAMILA: reemplaza VIDEO_ID_CAMILA por el ID real del video de YouTube de 45 segundos -->
+                  <iframe src="https://www.youtube.com/embed/VIDEO_ID_CAMILA" title="Video de Camila Vera" allowfullscreen></iframe>
+                </div>
+              </div>
+            </article>
+
+            <article class="team-card reveal">
+              <!-- Cambia la foto por una imagen real de Diego -->
+              <img class="member-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80" alt="Foto de Diego Ruiz">
+              <div class="team-body">
+                <h3>Diego Ruiz</h3>
+                <span class="role">Editor de video</span>
+                <p>Edita los clips, ajusta ritmo, música y recursos visuales para que cada video comunique con claridad.</p>
+                <div class="video-frame">
+                  <!-- VIDEO DIEGO: reemplaza VIDEO_ID_DIEGO por el ID real del video de YouTube de 45 segundos -->
+                  <iframe src="https://www.youtube.com/embed/VIDEO_ID_DIEGO" title="Video de Diego Ruiz" allowfullscreen></iframe>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="portafolio" class="section">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="section-kicker">Portafolio</span>
+            <h2 class="section-title">Piezas creadas para informar, emocionar y conectar.</h2>
+            <p class="section-copy">Estos son algunos productos desarrollados por el equipo durante la actividad universitaria.</p>
+          </div>
+
+          <div class="portfolio-wrap">
+            <div class="carousel reveal" aria-label="Carrusel de productos destacados">
+              <div class="carousel-track">
+                <article class="slide" style="background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1400&q=80');">
+                  <div class="slide-content">
+                    <span>Carrusel</span>
+                    <h3>Carrusel educativo para redes sociales</h3>
+                    <p>Una secuencia visual para explicar conceptos de marketing de forma rápida, simple y atractiva.</p>
+                  </div>
+                </article>
+
+                <article class="slide" style="background-image: url('https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=1400&q=80');">
+                  <div class="slide-content">
+                    <span>Video</span>
+                    <h3>Video promocional del proyecto</h3>
+                    <p>Una pieza audiovisual breve para presentar el concepto, el equipo y el valor creativo del proyecto.</p>
+                  </div>
+                </article>
+
+                <article class="slide" style="background-image: url('https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1400&q=80');">
+                  <div class="slide-content">
+                    <span>Podcast</span>
+                    <h3>Podcast sobre marketing digital</h3>
+                    <p>Una conversación estudiantil sobre tendencias, contenido y comunicación en plataformas digitales.</p>
+                  </div>
+                </article>
+              </div>
+
+              <div class="carousel-controls">
+                <button class="control-btn" type="button" data-carousel="prev" aria-label="Producto anterior">‹</button>
+                <button class="control-btn" type="button" data-carousel="next" aria-label="Producto siguiente">›</button>
+              </div>
+            </div>
+
+            <div class="portfolio-grid">
+              <article class="portfolio-card reveal">
+                <!-- Cambia esta imagen por la miniatura real del carrusel -->
+                <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=900&q=80" alt="Miniatura de carrusel educativo para redes sociales">
+                <div class="portfolio-body">
+                  <span class="type-badge">Carrusel</span>
+                  <h3>Carrusel educativo para redes sociales</h3>
+                  <p>Publicación por diapositivas con consejos claros para mejorar la comunicación digital.</p>
+                  <!-- Cambia el href por el enlace del producto -->
+                  <a class="button" href="#" target="_blank" rel="noopener">Ver más</a>
+                </div>
+              </article>
+
+              <article class="portfolio-card reveal">
+                <!-- Cambia esta imagen por la miniatura real del video -->
+                <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=900&q=80" alt="Miniatura de video promocional">
+                <div class="portfolio-body">
+                  <span class="type-badge">Video</span>
+                  <h3>Video promocional del proyecto</h3>
+                  <p>Video corto para presentar la propuesta creativa y el estilo visual de Marketing Creativo.</p>
+                  <!-- Cambia el href por el enlace de YouTube o Drive -->
+                  <a class="button" href="#" target="_blank" rel="noopener">Reproducir</a>
+                </div>
+              </article>
+
+              <article class="portfolio-card reveal">
+                <!-- Cambia esta imagen por la portada real del podcast -->
+                <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=900&q=80" alt="Miniatura de podcast sobre marketing digital">
+                <div class="portfolio-body">
+                  <span class="type-badge">Podcast</span>
+                  <h3>Podcast sobre marketing digital</h3>
+                  <p>Episodio con ideas prácticas sobre marcas, contenido, redes sociales y hábitos de consumo.</p>
+                  <!-- Cambia el href por el enlace de Spotify, YouTube o archivo de audio -->
+                  <a class="button" href="#" target="_blank" rel="noopener">Escuchar</a>
+                </div>
+              </article>
+
+              <article class="portfolio-card reveal">
+                <!-- Cambia esta imagen por la miniatura real de la infografía -->
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Miniatura de infografía sobre estrategias de contenido">
+                <div class="portfolio-body">
+                  <span class="type-badge">Infografía</span>
+                  <h3>Infografía sobre estrategias de contenido</h3>
+                  <p>Resumen visual con pasos y recomendaciones para planificar publicaciones efectivas.</p>
+                  <!-- Cambia el href por el enlace de la infografía -->
+                  <a class="button" href="#" target="_blank" rel="noopener">Ver más</a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="redes" class="section social-section">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="section-kicker">Redes Sociales</span>
+            <h2 class="section-title">Síguenos y comparte nuestro contenido.</h2>
+            <p class="section-copy">Aquí puedes conectar los perfiles oficiales del proyecto y colocar un QR para acceder más rápido desde el celular.</p>
+          </div>
+
+          <div class="social-layout">
+            <article class="social-box reveal">
+              <h3>Conecta con Marketing Creativo</h3>
+              <p>Usa estos botones para dirigir a Instagram y TikTok. Solo debes reemplazar los enlaces por las cuentas reales del equipo.</p>
+              <div class="social-actions">
+                <!-- Cambia este enlace por el Instagram real del proyecto -->
+                <a class="social-button instagram" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+                <!-- Cambia este enlace por el TikTok real del proyecto -->
+                <a class="social-button tiktok" href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok</a>
+              </div>
+            </article>
+
+            <aside class="social-box qr-card reveal">
+              <!-- Reemplaza este bloque por una imagen real del QR:
+                   <img src="ruta-del-qr.png" alt="Código QR de Marketing Creativo">
+              -->
+              <div class="qr-placeholder">QR</div>
+              <h3>Código QR</h3>
+              <p>Espacio reservado para enlazar al portafolio o a las redes sociales del proyecto.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>Marketing Creativo · Proyecto universitario de Publicidad y Marketing</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Menú móvil: abre/cierra la navegación superior en pantallas pequeñas.
+    const navToggle = document.querySelector(".nav-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    navToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("is-open");
+      navToggle.classList.toggle("is-open", isOpen);
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("is-open");
+        navToggle.classList.remove("is-open");
+        navToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // Carrusel simple del portafolio: puedes agregar más .slide y seguirá funcionando.
+    const track = document.querySelector(".carousel-track");
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const prevButton = document.querySelector('[data-carousel="prev"]');
+    const nextButton = document.querySelector('[data-carousel="next"]');
+    let currentSlide = 0;
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    function goToNextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      updateCarousel();
+    }
+
+    function goToPrevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      updateCarousel();
+    }
+
+    nextButton.addEventListener("click", goToNextSlide);
+    prevButton.addEventListener("click", goToPrevSlide);
+    setInterval(goToNextSlide, 6000);
+
+    // Animaciones suaves al hacer scroll.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>
