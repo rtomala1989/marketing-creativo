@@ -173,14 +173,28 @@
       padding: 130px 0 80px;
       color: #ffffff;
       background:
-        linear-gradient(90deg, rgba(17, 13, 31, 0.9), rgba(76, 29, 149, 0.66), rgba(236, 72, 153, 0.18)),
-        url("https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat;
+        linear-gradient(90deg, rgba(17, 13, 31, 0.92), rgba(76, 29, 149, 0.72), rgba(236, 72, 153, 0.22)),
+        linear-gradient(180deg, rgba(17, 13, 31, 0.18), rgba(17, 13, 31, 0.58)),
+        url("Integrantes/Equipo.jpeg") center 38% / cover no-repeat;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 78% 20%, rgba(236, 72, 153, 0.2), transparent 34%),
+        radial-gradient(circle at 18% 80%, rgba(45, 212, 191, 0.12), transparent 32%),
+        rgba(12, 8, 24, 0.2);
+      pointer-events: none;
     }
 
     .hero::after {
       content: "";
       position: absolute;
       inset: auto 0 0;
+      z-index: 0;
       height: 130px;
       background: linear-gradient(180deg, rgba(247, 243, 255, 0), var(--bg));
       pointer-events: none;
@@ -575,7 +589,8 @@
 
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 420px);
+      justify-content: center;
       gap: 20px;
     }
 
@@ -936,8 +951,18 @@
               <article class="feature reveal">
                 <div class="icon" aria-hidden="true">▶</div>
                 <div>
-                  <h3>Narrativa responsable</h3>
-                  <p>Contamos historias con lenguaje claro, ritmo visual y responsabilidad frente a la audiencia.</p>
+                  <h3>Narrativa</h3>
+                  <p>Contamos historias con lenguaje claro, ritmo visual y una estructura que ayuda a entender cada
+                    tema.</p>
+                </div>
+              </article>
+
+              <article class="feature reveal">
+                <div class="icon" aria-hidden="true">✓</div>
+                <div>
+                  <h3>Responsabilidad</h3>
+                  <p>Publicamos contenido con cuidado, respeto por la audiencia y compromiso con el impacto de cada
+                    mensaje.</p>
                 </div>
               </article>
             </div>
@@ -1088,9 +1113,9 @@
         <div class="container">
           <div class="section-heading reveal">
             <span class="section-kicker">Portafolio</span>
-            <h2 class="section-title">Contenido periodístico creado para redes.</h2>
-            <p class="section-copy">Aquí se reúnen el tras cámara, videos cortos y publicaciones realizadas por
-              Noticiero 6 Voces para Instagram y TikTok.</p>
+            <h2 class="section-title">Contenido periodístico detrás del proyecto.</h2>
+            <p class="section-copy">Aquí se reúne el tras cámara de Noticiero 6 Voces y el proceso de producción del
+              equipo.</p>
           </div>
 
           <div class="portfolio-wrap">
@@ -1106,25 +1131,6 @@
                   </div>
                 </article>
 
-                <article class="slide"
-                  style="background-image: url('https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=1400&q=80');">
-                  <div class="slide-content">
-                    <span>Video</span>
-                    <h3>Videos de 45 segundos</h3>
-                    <p>Piezas breves donde cada integrante comunica información clara con enfoque periodístico y formato
-                      digital.</p>
-                  </div>
-                </article>
-
-                <article class="slide"
-                  style="background-image: url('https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1400&q=80');">
-                  <div class="slide-content">
-                    <span>Redes</span>
-                    <h3>Publicaciones en Instagram y TikTok</h3>
-                    <p>Contenido adaptado para redes sociales, pensado para informar de forma directa, visual y
-                      accesible.</p>
-                  </div>
-                </article>
               </div>
 
               <div class="carousel-controls">
@@ -1148,48 +1154,6 @@
                 </div>
               </article>
 
-              <article class="portfolio-card reveal">
-                <!-- Cambia esta imagen por la miniatura real del video -->
-                <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=900&q=80"
-                  alt="Miniatura de video promocional">
-                <div class="portfolio-body">
-                  <span class="type-badge">Video</span>
-                  <h3>Videos de 45 segundos</h3>
-                  <p>Videos individuales con información investigada, narrada y editada para formatos de consumo rápido.
-                  </p>
-                  <!-- Lleva a la sección donde están los seis videos individuales -->
-                  <a class="button" href="#equipo">Reproducir</a>
-                </div>
-              </article>
-
-              <article class="portfolio-card reveal">
-                <!-- Cambia esta imagen por una miniatura real del contenido de Instagram -->
-                <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=900&q=80"
-                  alt="Miniatura de publicaciones de Instagram">
-                <div class="portfolio-body">
-                  <span class="type-badge">Instagram</span>
-                  <h3>Contenido publicado en Instagram</h3>
-                  <p>Reels y publicaciones del noticiero preparados para informar con claridad desde redes sociales.</p>
-                  <!-- Enlace de Instagram del proyecto -->
-                  <a class="button"
-                    href="https://www.instagram.com/noticias.seis_voces?utm_source=qr&igsh=ZG96eWNhbDl6M21y"
-                    target="_blank" rel="noopener">Ver Instagram</a>
-                </div>
-              </article>
-
-              <article class="portfolio-card reveal">
-                <!-- Cambia esta imagen por una miniatura real del contenido de TikTok -->
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 620'%3E%3Crect width='900' height='620' fill='%230b0b12'/%3E%3Ccircle cx='720' cy='130' r='105' fill='%2300f2ea' opacity='.24'/%3E%3Ccircle cx='170' cy='490' r='125' fill='%23ff0050' opacity='.22'/%3E%3Cpath d='M493 145v217c0 90-72 147-151 147-76 0-136-51-136-121 0-74 63-121 132-121 18 0 34 3 48 9v81c-13-11-29-18-47-18-30 0-55 20-55 49 0 27 23 48 54 48 37 0 61-24 61-72V145h94Z' fill='%23ffffff'/%3E%3Cpath d='M493 145c26 66 78 109 151 114v88c-61-3-111-24-151-62V145Z' fill='%2300f2ea'/%3E%3Cpath d='M466 168v217c0 90-72 147-151 147-34 0-66-10-90-27 25 35 69 57 117 57 79 0 151-57 151-147V145h-27v23Z' fill='%23ff0050' opacity='.8'/%3E%3Ctext x='450' y='560' text-anchor='middle' font-family='Poppins, Arial, sans-serif' font-size='86' font-weight='800' fill='%23ffffff'%3ETikTok%3C/text%3E%3C/svg%3E"
-                  alt="Miniatura de publicaciones de TikTok">
-                <div class="portfolio-body">
-                  <span class="type-badge">TikTok</span>
-                  <h3>Contenido publicado en TikTok</h3>
-                  <p>Videos breves del equipo adaptados al lenguaje dinámico de TikTok y a la audiencia digital.</p>
-                  <!-- Enlace de TikTok del proyecto -->
-                  <a class="button" href="https://www.tiktok.com/@seis.voces?_r=1&_t=ZS-96nboW1EheC" target="_blank"
-                    rel="noopener">Ver TikTok</a>
-                </div>
-              </article>
             </div>
           </div>
         </div>
@@ -1255,6 +1219,7 @@
     const slides = Array.from(document.querySelectorAll(".slide"));
     const prevButton = document.querySelector('[data-carousel="prev"]');
     const nextButton = document.querySelector('[data-carousel="next"]');
+    const carouselControls = document.querySelector(".carousel-controls");
     let currentSlide = 0;
 
     function updateCarousel() {
@@ -1271,9 +1236,13 @@
       updateCarousel();
     }
 
-    nextButton.addEventListener("click", goToNextSlide);
-    prevButton.addEventListener("click", goToPrevSlide);
-    setInterval(goToNextSlide, 6000);
+    if (slides.length > 1) {
+      nextButton.addEventListener("click", goToNextSlide);
+      prevButton.addEventListener("click", goToPrevSlide);
+      setInterval(goToNextSlide, 6000);
+    } else if (carouselControls) {
+      carouselControls.style.display = "none";
+    }
 
     // Animaciones suaves al hacer scroll.
     const observer = new IntersectionObserver(
