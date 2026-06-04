@@ -415,7 +415,7 @@
 
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
     }
 
@@ -459,10 +459,11 @@
 
     .video-frame {
       width: 100%;
-      aspect-ratio: 16 / 9;
-      margin-top: 16px;
+      max-width: 340px;
+      aspect-ratio: 9 / 16;
+      margin: 16px auto 0;
       overflow: hidden;
-      border-radius: 16px;
+      border-radius: 20px;
       background: #151225;
     }
 
